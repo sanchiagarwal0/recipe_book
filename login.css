@@ -1,0 +1,92 @@
+/* Full page styling */
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#ffecd2,#fcb69f);
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Login box */
+.login-container{
+    background:white;
+    padding:30px;
+    width:350px;
+    position: relative;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Heading */
+.login-container h2{
+    margin-bottom:20px;
+    color:#444;
+}
+
+/* Input fields */
+.login-container input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border-radius:5px;
+    border:1px solid #ddd;
+    font-size:14px;
+}
+
+/* Login button */
+.login-container button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    background:#ff7a5c;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.login-container button:hover{
+    background:#ff4e2f;
+}
+.password-box{
+position:relative;
+}
+
+.password-box input{
+width:100%;
+padding:10px;
+padding-right:40px;
+}
+
+.toggle-eye{
+position:absolute;
+right:10px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+font-size: 18px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#ff7a7a;
+    border:none;
+    border-radius:5px;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+button:hover{
+    background:#ff5252;
+}

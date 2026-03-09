@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Your Cart</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#f4f6f9;
+margin:0;
+padding:0;
+}
+
+.cart-container{
+width:70%;
+margin:auto;
+margin-top:60px;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+h1{
+text-align:center;
+margin-bottom:30px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#ff7043;
+color:white;
+padding:12px;
+}
+
+td{
+padding:12px;
+text-align:center;
+border-bottom:1px solid #eee;
+}
+
+/* quantity controller */
+
+.qty-box{
+display:inline-flex;
+align-items:center;
+border:1px solid #ddd;
+border-radius:8px;
+overflow:hidden;
+}
+
+.qty-btn{
+width:35px;
+height:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#ff7043;
+color:white;
+text-decoration:none;
+font-size:18px;
+font-weight:bold;
+}
+
+.qty-btn:hover{
+background:#e64a19;
+}
+
+.qty-number{
+width:40px;
+text-align:center;
+font-size:18px;
+font-weight:bold;
+background:#fafafa;
+}
+
+/* remove button */
+
+.remove-btn{
+background:#e53935;
+color:white;
+padding:6px 12px;
+border-radius:6px;
+text-decoration:none;
+}
+
+.remove-btn:hover{
+background:#c62828;
+}
+
+/* total section */
+
+.total-box{
+text-align:right;
+font-size:22px;
+margin-top:25px;
+}
+
+/* bottom buttons */
+
+.buttons{
+display:flex;
+justify-content:space-between;
+margin-top:30px;
+}
+
+.shop-btn{
+background:#42a5f5;
+color:white;
+padding:12px 20px;
+border-radius:8px;
+text-decoration:none;
+}
+
+.checkout-btn{
+background:#43a047;
+color:white;
+padding:12px 20px;
+border-radius:8px;
+text-decoration:none;
+}
+
+.shop-btn:hover{
+background:#1e88e5;
+}
+
+.checkout-btn:hover{
+background:#2e7d32;
+}
+
+.empty{
+text-align:center;
+font-size:20px;
+padding:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cart-container">
+
+<h1>🛒 Your Cart</h1>
+
+{% if cart %}
+
+<table>
+
+<tr>
+<th>Ingredient</th>
+<th>Price</th>
+<th>Quantity</th>
+<th>Total</th>
+<th>Action</th>
+</tr>
+
+{% for item, data in cart.items() %}
+
+<tr>
+
+<td>{{ item }}</td>
+
+<td>₹{{ data.price }}</td>
+
+<td>
+
+<div class="qty-box">
+
+<a href="/decrease/{{item}}" class="qty-btn">−</a>
+
+<div class="qty-number">
+{{ data.qty }}
+</div>
+
+<a href="/increase/{{item}}" class="qty-btn">+</a>
+
+</div>
+
+</td>
+
+<td>₹{{ data.price * data.qty }}</td>
+
+<td>
+<a href="/remove/{{item}}" class="remove-btn">Remove</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<div class="total-box">
+<b>Total: ₹{{ total }}</b>
+</div>
+
+<div class="buttons">
+
+<a href="/index" class="shop-btn">
+⬅ Continue Shopping
+</a>
+
+<a href="/checkout" class="checkout-btn">
+💳 Proceed to Payment
+</a>
+
+</div>
+
+{% else %}
+
+<div class="empty">
+
+🛒 Your cart is empty <br><br>
+
+<a href="/index" class="shop-btn">
+Start Shopping
+</a>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
